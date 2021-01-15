@@ -2,15 +2,16 @@ $(document).ready(function (){
 const movieAPIURL = 'https://reminiscent-marshy-galliform.glitch.me/movies';
 const getMovie = function(movie){
 
-    // $("#displayMovie").html("<p>" + '<strong>' + 'Movie Name: ' + '</strong>' + movie[0].title + "</p>");
+    var headerContent =
+        '<tr><th>' + 'Name' +'</th>'+
+        '<th>'+ 'Year' + '</th>'+
+        '<th>'+ 'Genre' + '</th>'+
+        '<th>'+ 'Rating' + '</th> </tr>'
+    $('#movieList').append(headerContent)
+
     for (var i = 0; i < movie.length; i++) {
 
             var content =
-                '<tr><th>' + 'Name' +'</th>'+
-                '<th>'+ 'Year' + '</th>'+
-                '<th>'+ 'Genre' + '</th>'+
-                '<th>'+ 'Rating' + '</th> </tr>'+
-
                "<tr> <td>" +  movie[i].title +  "</td> " +
                 "<td>" +  movie[i].year +  "</td>" +
                 "<td>" +  movie[i].genre +  "</td>" +
