@@ -7,7 +7,7 @@ const getMovie = function(movie){
         '<th>'+ 'Year' + '</th>'+
         '<th>'+ 'Genre' + '</th>'+
         '<th>'+ 'Rating' + '</th> </tr>'
-    $('#movieList').append(headerContent)
+    $('.table').append(headerContent)
 
     for (var i = 0; i < movie.length; i++) {
 
@@ -17,7 +17,7 @@ const getMovie = function(movie){
                 "<td>" +  movie[i].genre +  "</td>" +
                 "<td>" +  movie[i].rating +  "</td> </tr>"
 
-            $('#movieList').append(content)
+            $('.table').append(content)
 
 
         }
