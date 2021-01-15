@@ -1,5 +1,6 @@
 $(document).ready(function (){
 const movieAPIURL = 'https://reminiscent-marshy-galliform.glitch.me/movies';
+
 const getMovie = function(movie){
 
     var headerContent =
@@ -23,10 +24,33 @@ const getMovie = function(movie){
         }
 
     console.log(movie);
-
 }
+
+
 fetch(movieAPIURL).then(function (response) {
    response.json().then(getMovie)
 })
+
+
+
+
+${}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })
