@@ -46,29 +46,36 @@ let info = {
 
 
 
+
+
+
+
+
+
+
 // user input events
 
-info.searchString.keypress(function(e){
-	console.log(e);
-	if(e.keyCode == 13) {
-		info.addBtn.click();
-	}
-})
+// info.searchString.keypress(function(e){
+// 	console.log(e);
+// 	if(e.keyCode == 13) {
+// 		info.addBtn.click();
+// 	}
+// })
 
 
 
-info.addBtn.click(function(){
+// info.addBtn.click(function(){
 
-console.log("Am working");
-
-
-
-
+// console.log("Am working");
 
 
 
 
-})
+
+
+
+
+// })
 
 
 
