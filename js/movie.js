@@ -43,18 +43,25 @@ fetch(movieAPIURL).then(function (response) {
 
 // shortcuts for the html input fields
 
-// let info = {
-//     addBtn:$(".btn_add"),
-//     delBtn:$(".btn_del"),
-//     editBtn:$(".btn_edit"),
-//     addInput:$("#searchMovie_1"),
-//     delInput:$("#searchMovie_2"),
-//     editInput:$("#searchMovie_3"),
-//     searchString: $(".userInput").val()
-// }
+let info = {
+    addBtn:$(".btn_add"),
+    delBtn:$(".btn_del"),
+    editBtn:$(".btn_edit"),
+    addInput:$("#searchMovie_1"),
+    delInput:$("#searchMovie_2"),
+    editInput:$("#searchMovie_3")
+}
 
+let uiValue = {
+    name:$("#name").val(),
+    year:$("#year").val(),
+    genre:$("#genre").val(),
+    rating:$("#rating").val()
+}
 
+console.log(`Name:${uiValue.name}<br>Year:${uiValue.year}<br>Genre:${uiValue.genre}<br>Rating:${uiValue.rating}`)
 
+uiValue.name
 // user input events
 
 // info.searchString.keypress(function(e){
@@ -114,9 +121,6 @@ fetch(movieAPIURL).then(function (response) {
         let searchString = $(".searchValue").val();
         console.log(searchString);
     })
-
-
-
 
 
 
