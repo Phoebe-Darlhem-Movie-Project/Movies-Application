@@ -61,7 +61,7 @@ let uiValue = {
 
 console.log(`Name:${uiValue.name}<br>Year:${uiValue.year}<br>Genre:${uiValue.genre}<br>Rating:${uiValue.rating}`)
 
-uiValue.name
+
 // user input events
 
 // info.searchString.keypress(function(e){
@@ -115,12 +115,6 @@ uiValue.name
 //     console.log(response);
 // })
 
-
-    $(".btn").click(function(e) {
-        e.preventDefault()
-        let searchString = $(".searchValue").val();
-        console.log(searchString);
-    })
 
 
 
