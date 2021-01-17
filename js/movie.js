@@ -14,21 +14,13 @@ const getMovie = function(movie){
     for (var i = 0; i < movie.length; i++) {
 
             var content =
-               // "<tr> <td>" +  movie[i].title +  "</td> " +
-               //  "<td>" +  movie[i].year +  "</td>" +
-               //  "<td>" +  movie[i].genre +  "</td>" +
-               //  '<td>'+  movie[i].rating +   '</td>' +
-               //  <a href="#" class="btn btn-danger btn-sm delete">X</a>
-
-
-      `
-      <tr><td>${movie[i].title}</td>
-      <td>${movie[i].year}</td>
-      <td>${movie[i].genre}</td>
-      <td>${movie[i].rating}</td>
-      <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td></tr>
-    `;
-
+                  `
+                  <tr><td>${movie[i].title}</td>
+                  <td>${movie[i].year}</td>
+                  <td>${movie[i].genre}</td>
+                  <td>${movie[i].rating}</td>
+                  <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td></tr>
+                `;
             $('.table').append(content)
 
     }
@@ -109,18 +101,45 @@ fetch(movieAPIURL).then(function (response) {
 // })
 
 
+//ADDING MOVIE
+
     $(".btn").click(function(e) {
         e.preventDefault()
-        let searchString = $(".searchValue").val();
-        console.log(searchString);
+
+        var movieData = {};
+        var formData = $(".movie").serializeArray();
+        // console.log(formData);
+
+        $.each(formData, function() {
+            if (movieData[this.name]) {
+                if (!movieData[this.name].push) {
+                    movieData[this.name] = [movieData[this.name]];
+                }
+                movieData[this.name].push(this.value || '');
+            } else {
+                movieData[this.name] = this.value || '';
+            }
+
+        });
+        console.log(movieData);
+
+        const updateMoviesToDB = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(movieData),
+        };
+
+            fetch(movieAPIURL , updateMoviesToDB).then(function (response) {
+                console.log(response);
+            })
+
     })
 
+//DELETING MOVIE
+    $(".delete").click(function(e) {
+        e.preventDefault()
 
-
-
-
-
-
-
-
+    })
 })
