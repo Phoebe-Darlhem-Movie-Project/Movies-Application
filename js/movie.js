@@ -33,6 +33,15 @@ fetch(movieAPIURL).then(function (response) {
    response.json().then(getMovie)
 })
 
+    //practice
+    fetch(movieAPIURL).then(response => {
+        return response.json();
+    }).then(data => {
+        // Work with JSON data here
+        console.log(data[1].title);
+    }).catch(err => {
+        // Do something for an error here
+    });
 // shortcuts for the html input fields
 
 // let info = {
@@ -132,6 +141,7 @@ fetch(movieAPIURL).then(function (response) {
         };
 
             fetch(movieAPIURL , updateMoviesToDB).then(function (response) {
+                response.json().then(getMovie)
                 console.log(response);
             })
 
@@ -141,5 +151,34 @@ fetch(movieAPIURL).then(function (response) {
     $(".delete").click(function(e) {
         e.preventDefault()
 
+        let movieID
+
+        fetch(movieAPIURL + "/5", {method: 'DELETE'}).then(function (response) {
+            console.log(response);
+
+        })
     })
+//
+// //UPDATING MOVIES
+//     $(".btn").click(function(e) {
+//         e.preventDefault()
+//
+//         let movieID
+//         const patchMethod = {
+//             method: 'PATCH',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({dream: "Put our string in here"})
+//         };
+//
+//         fetch(movieAPIURL + "/2", options).then(function (response) {
+//             console.log(response);
+//
+//         })
+//
+//
+//     })
+
+
 })
