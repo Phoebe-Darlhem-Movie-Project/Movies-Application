@@ -4,7 +4,8 @@ const movieAPIURL = 'https://reminiscent-marshy-galliform.glitch.me/movies';
 const getMovie = function(movie){
 
     var headerContent =
-        '<tr><th>' + 'Name' +'</th>'+
+        '<tr><th>' + 'Poster' +'</th>'+
+        '<th>' + 'Name' +'</th>'+
         '<th>'+ 'Year' + '</th>'+
         '<th>'+ 'Genre' + '</th>'+
         '<th>'+ 'Rating' + '</th>'+
@@ -17,7 +18,8 @@ const getMovie = function(movie){
         row.setAttribute("id", `movie-row-${movie.id}`);
             var content =
                   `
-                  <tr><td>${movie[i].title}</td>
+                  <tr><a href="${movie[i].poster}"><td><img class="image" src="${movie[i].poster}" alt=""></td></a>
+                  <td>${movie[i].title}</td>
                   <td>${movie[i].year}</td>
                   <td>${movie[i].genre}</td>
                   <td>${movie[i].rating}</td>
@@ -36,30 +38,62 @@ fetch(movieAPIURL).then(function (response) {
 })
 
     //practice
-    fetch(movieAPIURL).then(response => {
-        return response.json();
-    }).then(data => {
-        // Work with JSON data here
-        console.log(data[1].title);
-        let movieTitle = document.getElementById("title").value;
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i].id);
-            if (movieTitle == data[i].title){
+    // fetch(movieAPIURL).then(response => {
+    //     return response.json();
+    // }).then(data => {
+    //     // Work with JSON data here
+    //     console.log(data[1].title);
+    //     let movieTitle = document.getElementById("title").value;
+    //     for (var i = 0; i < data.length; i++) {
+    //         console.log(data[i].id);
+    //         if (movieTitle == data[i].title){
+    //
+    //         }else{
+    //
+    //         }
+    //     }
+    //
+    // }).catch(err => {
+    //     // Do something for an error here
+    // });
+    //OMDB API Call
+    $('#movie-form').submit(function (event){
+        event.preventDefault()
 
-            }else{
+        let movie =$('#title').val()
+        let url = 'http://www.omdbapi.com/?apikey='+omdbAPI;
 
+        $.ajax({
+            method: 'GET',
+            url: url+'&t='+movie,
+            success:function (data){
+                console.log(data);
+                var movieData = {
+                    'poster':`${data.Poster}`,
+                    'title':`${ data.Title}`,
+                    'year': `${ data.Released}`,
+                    'genre': `${ data.Genre}`,
+                    'rating': `${ data.imdbRating}`
+                };
+                console.log(movieData);
+                const updateMoviesToDB = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(movieData),
+                };
+
+                fetch(movieAPIURL , updateMoviesToDB).then(function (response) {
+
+                    console.log(response);
+                })
+                console.log(data);
             }
-        }
+        })
 
-    }).catch(err => {
-        // Do something for an error here
-    });
-    fetch('http://www.omdbapi.com/?i=tt3896198&apikey=', {
-                APPID: omdbAPI
-            })
-        // .then((success) => { success.json() } )
-        .then((movies) => { console.log(movies) } )
-        .catch((error)=>{ console.log(error)});
+
+    })
 // shortcuts for the html input fields
 
 // let info = {
@@ -79,40 +113,40 @@ fetch(movieAPIURL).then(function (response) {
 
 //ADDING MOVIE
 
-    $(".btn").click(function(e) {
-        e.preventDefault()
-
-        var movieData = {};
-        var formData = $(".movie").serializeArray();
-        // console.log(formData);
-
-        $.each(formData, function() {
-            if (movieData[this.name]) {
-                if (!movieData[this.name].push) {
-                    movieData[this.name] = [movieData[this.name]];
-                }
-                movieData[this.name].push(this.value || '');
-            } else {
-                movieData[this.name] = this.value || '';
-            }
-
-        });
-        console.log(movieData);
-
-        const updateMoviesToDB = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(movieData),
-        };
-
-            fetch(movieAPIURL , updateMoviesToDB).then(function (response) {
-                response.json().then(getMovie)
-                console.log(response);
-            })
-
-    })
+    // $(".btn").click(function(e) {
+    //     e.preventDefault()
+    //
+    //     var movieData = {};
+    //     var formData = $(".movie").serializeArray();
+    //     // console.log(formData);
+    //
+    //     $.each(formData, function() {
+    //         if (movieData[this.name]) {
+    //             if (!movieData[this.name].push) {
+    //                 movieData[this.name] = [movieData[this.name]];
+    //             }
+    //             movieData[this.name].push(this.value || '');
+    //         } else {
+    //             movieData[this.name] = this.value || '';
+    //         }
+    //
+    //     });
+    //     console.log(movieData);
+    //
+    //     const updateMoviesToDB = {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(movieData),
+    //     };
+    //
+    //         fetch(movieAPIURL , updateMoviesToDB).then(function (response) {
+    //
+    //             console.log(response);
+    //         })
+    //
+    // })
 
 //DELETING MOVIE
 //     $(".delete").click(function(e) {

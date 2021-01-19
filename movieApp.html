@@ -8,6 +8,12 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Movies Application</title>
+    <style>
+        .image{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
 <h1>Movies Application</h1>
@@ -24,34 +30,34 @@
 <!-- search input area for the movie -->
 <h3>Add Movie to Selection</h3>
 <div>
-<form enctype='application/json' class ='movie' id="book-form">
+<form enctype='application/json' class ='movie' id="movie-form" autocomplete="on">
     <div class="form-group">
-        <label for="title">Name</label>
+        <label for="title">Movie Name</label>
         <input type="text" name='title' id="title" class="form-control searchValue">
     </div>
-    <div class="form-group">
-        <label for="year">Year</label>
-        <input type="text" name='year' id="year" class="form-control searchValue">
-    </div>
-    <div class="form-group">
-        <label for="genre">Genre</label>
-        <input type="text" name='genre' id="genre" class="form-control searchValue">
-    </div>
-    <div class="form-group">
-        <label for="rating">Rating</label>
-        <input type="text" name='rating' id="rating" class="form-control searchValue">
-    </div>
+<!--    <div class="form-group">-->
+<!--        <label for="year">Year</label>-->
+<!--        <input type="text" name='year' id="year" class="form-control searchValue">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="genre">Genre</label>-->
+<!--        <input type="text" name='genre' id="genre" class="form-control searchValue">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="rating">Rating</label>-->
+<!--        <input type="text" name='rating' id="rating" class="form-control searchValue">-->
+<!--    </div>-->
     <input type="submit" value="Add Movie" class="btn btn-primary btn-block searchValue">
-<!--    <input type="submit" onclick="updateMovie()" value="Update Movie" class="btn btn-primary btn-block searchValue">-->
 </form>
 </div>
-
+<div id="result"> </div>
 <!-- end of search movie -->
 
 
 
 <script src="js/jquery.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/keys.js"></script>
 <script src="js/movie.js"></script>
 </body>
 </html>
