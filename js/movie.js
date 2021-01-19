@@ -96,16 +96,23 @@ fetch(movieAPIURL).then(function (response) {
     })
 // shortcuts for the html input fields
 
-// let info = {
-//     addBtn:$(".btn_add"),
-//     delBtn:$(".btn_del"),
-//     editBtn:$(".btn_edit"),
-//     addInput:$("#searchMovie_1"),
-//     delInput:$("#searchMovie_2"),
-//     editInput:$("#searchMovie_3"),
-//     searchString: $(".userInput").val()
-// }
+let info = {
+    addBtn:$(".btn_add"),
+    delBtn:$(".btn_del"),
+    editBtn:$(".btn_edit"),
+    addInput:$("#searchMovie_1"),
+    delInput:$("#searchMovie_2"),
+    editInput:$("#searchMovie_3")
+}
 
+let uiValue = {
+    name:$("#name").val(),
+    year:$("#year").val(),
+    genre:$("#genre").val(),
+    rating:$("#rating").val()
+}
+
+console.log(`Name:${uiValue.name}<br>Year:${uiValue.year}<br>Genre:${uiValue.genre}<br>Rating:${uiValue.rating}`)
 
 
 // user input events
@@ -179,7 +186,7 @@ fetch(movieAPIURL).then(function (response) {
 //         })
 //
 //
-//     })
+
 
     // fetch(movieAPIURL + "/20", {method: 'DELETE'}).then(function (response) {
     //     console.log(response);
