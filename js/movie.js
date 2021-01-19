@@ -13,6 +13,8 @@ const getMovie = function(movie){
 
     for (var i = 0; i < movie.length; i++) {
 
+        const row = document.createElement("tr");
+        row.setAttribute("id", `movie-row-${movie.id}`);
             var content =
                   `
                   <tr><td>${movie[i].title}</td>
@@ -39,9 +41,25 @@ fetch(movieAPIURL).then(function (response) {
     }).then(data => {
         // Work with JSON data here
         console.log(data[1].title);
+        let movieTitle = document.getElementById("title").value;
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i].id);
+            if (movieTitle == data[i].title){
+
+            }else{
+
+            }
+        }
+
     }).catch(err => {
         // Do something for an error here
     });
+    fetch('http://www.omdbapi.com/?i=tt3896198&apikey=', {
+                APPID: omdbAPI
+            })
+        // .then((success) => { success.json() } )
+        .then((movies) => { console.log(movies) } )
+        .catch((error)=>{ console.log(error)});
 // shortcuts for the html input fields
 
 // let info = {
@@ -57,57 +75,6 @@ fetch(movieAPIURL).then(function (response) {
 
 
 // user input events
-
-// info.searchString.keypress(function(e){
-// 	console.log(e);
-// 	if(e.keyCode == 13) {
-// 		info.addBtn.click();
-// 	}
-// })
-
-//Get Movie from user
-
-//     // Movie Class: Represents a Movie
-//     class Movie {
-//         constructor(name, year, genre, rating) {
-//             this.name = name;
-//             this.year = year;
-//             this.genre = genre;
-//             this.rating = rating;
-//         }
-//     }
-//
-//
-//
-// info.addBtn.click(function(){
-//
-// console.log("Am working");
-//
-//
-//
-//
-// })
-//
-//  const movieObj = {
-//     "title": "2023 Reloaded",
-//      "year": "2021",
-//      "genre": "action",
-//      "rating": "5",
-//  };
-//     console.log(movieObj);
-//
-//
-//     const updateBooks = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(movieObj),
-//     };
-//
-//     fetch(movieAPIURL , updateBooks).then(function (response){
-//     console.log(response);
-// })
 
 
 //ADDING MOVIE
@@ -148,16 +115,16 @@ fetch(movieAPIURL).then(function (response) {
     })
 
 //DELETING MOVIE
-    $(".delete").click(function(e) {
-        e.preventDefault()
-
-        let movieID
-
-        fetch(movieAPIURL + "/5", {method: 'DELETE'}).then(function (response) {
-            console.log(response);
-
-        })
-    })
+//     $(".delete").click(function(e) {
+//         e.preventDefault()
+//
+//         let movieID
+//
+//         fetch(movieAPIURL + "/5", {method: 'DELETE'}).then(function (response) {
+//             console.log(response);
+//
+//         })
+//     })
 //
 // //UPDATING MOVIES
 //     $(".btn").click(function(e) {
@@ -180,5 +147,9 @@ fetch(movieAPIURL).then(function (response) {
 //
 //     })
 
+    // fetch(movieAPIURL + "/20", {method: 'DELETE'}).then(function (response) {
+    //     console.log(response);
+    //
+    // })
 
 })
