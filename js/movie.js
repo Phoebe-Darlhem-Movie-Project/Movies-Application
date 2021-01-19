@@ -37,7 +37,25 @@ fetch(movieAPIURL).then(function (response) {
    response.json().then(getMovie)
 })
 
-
+    //practice search movie
+    // fetch(movieAPIURL).then(response => {
+    //     return response.json();
+    // }).then(data => {
+    //     // Work with JSON data here
+    //     console.log(data[1].title);
+    //     let movieTitle = document.getElementById("title").value;
+    //     for (var i = 0; i < data.length; i++) {
+    //         console.log(data[i].id);
+    //         if (movieTitle == data[i].title){
+    //
+    //         }else{
+    //
+    //         }
+    //     }
+    //
+    // }).catch(err => {
+    //     // Do something for an error here
+    // });
     //OMDB API Call
     $('#movie-form').submit(function (event){
         event.preventDefault()
@@ -130,7 +148,18 @@ fetch(movieAPIURL).then(function (response) {
     //
     // })
 
-
+//DELETING MOVIE
+//     $(".delete").click(function(e) {
+//         e.preventDefault()
+//
+//         let movieID
+//
+//         fetch(movieAPIURL + "/5", {method: 'DELETE'}).then(function (response) {
+//             console.log(response);
+//
+//         })
+//     })
+//
 // //UPDATING MOVIES
 //     $(".btn").click(function(e) {
 //         e.preventDefault()
