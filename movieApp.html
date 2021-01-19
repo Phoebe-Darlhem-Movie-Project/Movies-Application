@@ -10,49 +10,53 @@
     <title>Movies Application</title>
     <style>
         .image{
-            height: 100px;
-            width: 100px;
+            height: 150px;
+            width: 150px;
+        }
+        h1, h3 {
+            text-align: center;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-<h1>Movies Application</h1>
-<div id="displayMovie"></div>
-<table class="table">
-    <tr id="heading">
+<div class="container">
+    <h1>Movies Application</h1>
+    <div id="displayMovie"></div>
+    <table class="table">
+        <tr id="heading">
 
-    </tr>
-    <tr id="movieList">
+        </tr>
+        <tr id="movieList">
 
-    </tr>
-</table>
+        </tr>
+    </table>
 
-<!-- search input area for the movie -->
-<h3>Add Movie to Selection</h3>
-<div>
-<form enctype='application/json' class ='movie' id="movie-form" autocomplete="on">
-    <div class="form-group">
-        <label for="title">Movie Name</label>
-        <input type="text" name='title' id="title" class="form-control searchValue">
+    <!-- search input area for the movie -->
+    <h3>Add Movie to Selection</h3>
+    <div>
+        <form enctype='application/json' class='movie' id="movie-form" autocomplete="on">
+            <div class="form-group">
+                <label for="title">Movie Name</label>
+                <input type="text" name='title' id="title" class="form-control searchValue">
+            </div>
+            <!--    <div class="form-group">-->
+            <!--        <label for="year">Year</label>-->
+            <!--        <input type="text" name='year' id="year" class="form-control searchValue">-->
+            <!--    </div>-->
+            <!--    <div class="form-group">-->
+            <!--        <label for="genre">Genre</label>-->
+            <!--        <input type="text" name='genre' id="genre" class="form-control searchValue">-->
+            <!--    </div>-->
+            <!--    <div class="form-group">-->
+            <!--        <label for="rating">Rating</label>-->
+            <!--        <input type="text" name='rating' id="rating" class="form-control searchValue">-->
+            <!--    </div>-->
+            <input type="submit" value="Add Movie" class="btn btn-danger btn-block searchValue">
+        </form>
     </div>
-<!--    <div class="form-group">-->
-<!--        <label for="year">Year</label>-->
-<!--        <input type="text" name='year' id="year" class="form-control searchValue">-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--        <label for="genre">Genre</label>-->
-<!--        <input type="text" name='genre' id="genre" class="form-control searchValue">-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--        <label for="rating">Rating</label>-->
-<!--        <input type="text" name='rating' id="rating" class="form-control searchValue">-->
-<!--    </div>-->
-    <input type="submit" value="Add Movie" class="btn btn-primary btn-block searchValue">
-</form>
 </div>
-<div id="result"> </div>
 <!-- end of search movie -->
-
 
 
 <script src="js/jquery.js"></script>
