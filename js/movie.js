@@ -52,7 +52,7 @@ const delOneMovie = (id) => {
     });
   };
 
-
+delOneMovie();
 
   //get movie from JSON
   fetch(movieAPIURL).then(function (response) {
