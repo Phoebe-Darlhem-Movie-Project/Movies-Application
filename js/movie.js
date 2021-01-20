@@ -1,4 +1,12 @@
 $(document).ready(function () {
+   
+
+    const loadPage = {
+        begin: () => $("body").addClass("loading"),
+        end: () => $("body").removeClass("loading")
+      };
+
+  
   const movieAPIURL = "https://reminiscent-marshy-galliform.glitch.me/movies";
 
   const getMovie = function (movie) {
@@ -22,7 +30,9 @@ $(document).ready(function () {
       "Delete" +
       "</th> </tr>";
     $(".table").append(headerContent);
-
+    
+    loadPage.begin();
+    
     for (var i = 0; i < movie.length; i++) {
       var content = `
                   <tr id="movie-row-${movie[i].id}" ><a href="${movie[i].poster}"><td><img class="image img-thumbnail" src="${movie[i].poster}" alt=""></td></a>
@@ -34,7 +44,7 @@ $(document).ready(function () {
                 `;
       $(".table").append(content);
     }
-
+    loadPage.end();
     console.log(movie);
   };
 
@@ -44,10 +54,10 @@ $(document).ready(function () {
 const delOneMovie = (id) => {
     console.log("Deleting movie", id);
     // First remove from API
-    fetch(movieAPIURL, { method: "DELETE" }).then((response) => {
+    fetch(`${movieAPIURL}/${id}` , { method: "DELETE" }).then((response) => {
       response.json().then(() => {
         // On successful response, remove from DOM
-        document.querySelector(`#movie-row-${id}`).remove();
+        $(`#movie-row-${id}`).remove();
       });
     });
   };
@@ -117,25 +127,25 @@ delOneMovie();
   });
   // shortcuts for the html input fields
 
-  let info = {
-    addBtn: $(".btn_add"),
-    delBtn: $(".btn_del"),
-    editBtn: $(".btn_edit"),
-    addInput: $("#searchMovie_1"),
-    delInput: $("#searchMovie_2"),
-    editInput: $("#searchMovie_3"),
-  };
+//   let info = {
+//     addBtn: $(".btn_add"),
+//     delBtn: $(".btn_del"),
+//     editBtn: $(".btn_edit"),
+//     addInput: $("#searchMovie_1"),
+//     delInput: $("#searchMovie_2"),
+//     editInput: $("#searchMovie_3"),
+//   };
 
-  let uiValue = {
-    name: $("#name").val(),
-    year: $("#year").val(),
-    genre: $("#genre").val(),
-    rating: $("#rating").val(),
-  };
+//   let uiValue = {
+//     name: $("#name").val(),
+//     year: $("#year").val(),
+//     genre: $("#genre").val(),
+//     rating: $("#rating").val(),
+//   };
 
-  console.log(
-    `Name:${uiValue.name}<br>Year:${uiValue.year}<br>Genre:${uiValue.genre}<br>Rating:${uiValue.rating}`
-  );
+//   console.log(
+//     `Name:${uiValue.name}<br>Year:${uiValue.year}<br>Genre:${uiValue.genre}<br>Rating:${uiValue.rating}`
+//   );
 
   // user input events
 
